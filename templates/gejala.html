@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/infeksi.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="/static/css/logo-pcm.png" type="image/x-icon">
+    
+    <title>Aplikasi PCM - Tes Gejala</title>
+  </head>
+    <body>
+        <div class="split left">
+            <!-- Launch everything on left side -->
+            <div class="row align-items-end">
+                <div class="col text-center">
+                    <img style="height:100px; width: 100px; padding-left:10px" src="/static/css/logo-pcm.png"/>
+                    <h5 style="color:darkblue;"><b>Pendeteksi Covid-19 Mandiri</b></h5>
+                </div>
+                <div class="row text-center">
+                    <img style="max-width:100%; height:auto\9; width:auto\9" src="/static/css/pcm.jpg"/>
+                </div>
+            </div>
+            <br>
+            <div class="row align-items-end">
+                <div class="col text-center">
+                   <button onclick="window.location.href='/infeksi/'" class="w3-button w3-red w3-round-large" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);"><b>Deteksi Infeksi</b></button>
+                </div>
+                <div class="col text-center">
+                    <button onclick="window.location.href='/gejala/'" class="w3-button w3-blue w3-round-large" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);"><b>Deteksi Gejala</b></button>
+                </div>
+            </div>
+        </div>
+        <div class="split right">
+            <!-- Launch everything on right side -->
+            <div>
+                 <div class="w3-container">
+                    
+                    <div class="row w3-container w3-card-2">
+                        <div class="row w3-display-container">
+                            <img class="w3-round w3-image" src="/static/css/health_rawpixel.jpg" alt="Lights" >
+                            <div class="w3-display-topleft w3-container">
+                                <h1 style="color:white; padding-top:30px;">
+                                    <b>Beritahu Kami
+                                    <br>Apa Yang Anda Rasakan</b>
+                                </h1>
+                                <p style="color:white;"><b>Mohon untuk mengisi data diri anda dan
+                                <br>gejala penyakit apa yang anda rasakan. Sehingga kami 
+                                <br>dapat memprediksi gejala Covid-19 pada diri anda
+                                </b>
+                            </div>
+                            <div class="w3-display-bottomright w3-container"><i>source: rawpixel</i></div>
+                        </div>
+                    </div>
+                    <div class="col align-items-end w3-container">
+                        <form class="p-3 isi" action="/gejala/" method=post enctype="multipart/form-data">
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white;">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">1. Jenis Kelamin</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="w3-radio gender" type="radio" id="pria" name="gender" value="Pria">
+                                    <label for="pria">Pria</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio gender" type="radio" id="wanita" name="gender" value="Wanita">
+                                    <label for="wanita">Wanita</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">2. Berapa usia anda ?</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="form-control age" id="age" type="number" name="age" value="Age">    
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">3. Apakah anda mengalami gejala demam ?</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="w3-radio fever" type="radio" id="yes_fever" name="fever" value="Yes_fever">
+                                    <label for="yes_fever">Ya</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio fever" type="radio" id="no_fever" name="fever" value="No_fever">
+                                    <label for="no_fever">Tidak</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">4. Apakah anda mengalami gejala batuk ?</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="w3-radio cough" type="radio" id="yes_cough" name="cough" value="Yes_cough">
+                                    <label for="yes_cough">Ya</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio cough" type="radio" id="no_cough" name="cough" value="No_cough">
+                                    <label for="no_cough">Tidak</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">5. Apakah anda mengalami gejala pilek ?</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="w3-radio runny_noise" type="radio" id="yes_runny_noise" name="runny_noise" value="Yes_runny_noise">
+                                    <label for="yes_runny_noise">Ya</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio runny_noise" type="radio" id="no_runny_noise" name="runny_noise" value="No_runny_noise">
+                                    <label for="no_runny_noise">Tidak</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">6. Apakah anda mengalami gejala nyeri otot ?</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="w3-radio muscle_soreness" type="radio" id="yes_muscle_soreness" name="muscle_soreness" value="Yes_muscle_soreness">
+                                    <label for="yes_muscle_soreness">Ya</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio muscle_soreness" type="radio" id="no_muscle_soreness" name="muscle_soreness" value="No_muscle_soreness">
+                                    <label for="no_muscle_soreness">Tidak</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">7. Apakah anda mengidap penyakit pneumonia (peradangan paru-paru) ?</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="w3-radio pneumonia" type="radio" id="yes_pneumonia" name="pneumonia" value="Yes_pneumonia">
+                                    <label for="yes_pneumonia">Ya</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio pneumonia" type="radio" id="no_pneumonia" name="pneumonia" value="No_pneumonia">
+                                    <label for="no_pneumonia">Tidak</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                    				<h5 style="color:gray">8. Apakah anda mengalami gejala diare ?</h5>
+                    			</div>
+                                <div class="col">
+                                    <input class="w3-radio diarrhea" type="radio" id="yes_diarrhea" name="diarrhea" value="Yes_diarrhea">
+                                    <label for="yes_diarrhea">Ya</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio diarrhea" type="radio" id="no_diarrhea" name="diarrhea" value="No_diarrhea">
+                                    <label for="no_diarrhea">Tidak</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">9. Apakah anda mengidap penyakit infeksi paru-paru ?</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="w3-radio lung_infection" type="radio" id="yes_lung_infection" name="lung_infection" value="Yes_lung_infection">
+                                    <label for="yes_lung_infection">Ya</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio lung_infection" type="radio" id="no_lung_infection" name="lung_infection" value="No_lung_infection">
+                                    <label for="no_lung_infection">Tidak</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col w3-container w3-card-2" style="background-color: white">
+                                <br>
+                                <div class="col">
+                					<h5 style="color:gray">10. Apakah anda memiliki riwayat perjalanan dalam 2 minggu terakhir ?</h5>
+                				</div>
+                                <div class="col">
+                                    <input class="w3-radio travel_history" type="radio" id="yes_travel_history" name="travel_history" value="Yes_travel_history">
+                                    <label for="yes_travel_history">Ya</label><br>
+                                </div>
+                                <div class="col">
+                                    <input class="w3-radio travel_history" type="radio" id="no_travel_history" name="travel_history" value="No_travel_history">
+                                    <label for="no_travel_history">Tidak</label><br>
+                                </div>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="text-center">
+                                <b><input class="w3-button w3-green w3-round-large button" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" type="submit" value="Deteksi" href="/gejala/"/></b>
+                            </div>
+                            <br>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="col w3-container w3-card-2">
+                        <div class="row align-items-end">
+                            <div class="col w3-indigo">
+                                <h4 style="padding-top:5px"><b>Hasil Analisis</b></h4>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                        {% if results is defined %}
+                            {% for i in range(len-1,-1,-1) %}
+                        
+                                {{ results[i]|safe }}
+                                
+                            {% endfor %}
+                        {% endif %}
+                        </div>  
+                        <hr/>
+                    </div>   
+                </div>
+            </div>
+        </div>
+        <div class="footer w3-indigo">
+            <div class="row align-items-end">
+                <div class="col text-left">
+                    <b>Wildan Adhitya Geraldine &copy; 2021</b>        
+                </div>
+                <div class="col text-right">
+                    <b>Aplikasi Pendeteksi Covid-19 Mandiri</b>        
+                </div> 
+            </div>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        let gender = document.querySelector(".gender")
+        let age = document.querySelector(".age")
+        let fever = document.querySelector(".fever")
+        let cough = document.querySelector(".cough")
+        let runny_noise = document.querySelector(".runny_noise")
+        let muscle_soreness = document.querySelector(".muscle_soreness")
+        let pneumonia = document.querySelector(".pneumonia")
+        let diarrhae = document.querySelector(".diarrhea")
+        let lung_infection = document.querySelector(".lung_infection")
+        let travel_history = document.querySelector(".travel_history")
+        let button = document.querySelector(".button")
+
+        button.disabled = true
+
+        travel_history.addEventListener("change", stateHandler)
+        
+        function stateHandler() {
+            if (document.querySelector(".travel_history").value != "") {
+                button.disabled = false
+            } else {
+                button.disabled = true
+            }
+        }
+    </script>
+  </body>
+</html>

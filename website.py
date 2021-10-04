@@ -117,6 +117,18 @@ def gejala():
         else:
             travel_history = 0
             
+        print()
+        print("Gender :",gender)
+        print("Age :",age)
+        print("Fever :",fever)
+        print("Cough :",cough)
+        print("Runni noise :",runny_noise)
+        print("Muscle soreness :",muscle_soreness)
+        print("Pneumonia :",pneumonia)
+        print("Diarrhea :",diarrhea)
+        print("Lung infection :",lung_infection)
+        print("Travel history :",travel_history)
+        
         return redirect(url_for('hasil_gejala', gender=gender, age=age, fever=fever, cough=cough, runny_noise=runny_noise, 
                                 muscle_soreness=muscle_soreness, pneumonia=pneumonia, 
                                 diarrhea=diarrhea, lung_infection=lung_infection, travel_history=travel_history))
@@ -194,7 +206,7 @@ def uploaded_file(filename):
     myGraph = app.config['GRAPH']
     with myGraph.as_default():
         set_session(mySession)
-        myModel = load_model('model_pcm_xray.h5')
+        myModel = load_model('model_pcm_xray_v2.h5')
         result = myModel.predict(test_image)
         image_src = '/'+UPLOAD_FOLDER+'/'+filename
         results = []

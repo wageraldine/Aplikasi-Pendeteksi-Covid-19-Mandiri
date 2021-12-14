@@ -220,7 +220,7 @@ def uploaded_file(filename):
         return render_template('infeksi.html', myX=X, myY=Y, myZ=Z, mySampleX=sampleX, mySampleY=sampleY, mySampleZ=sampleZ, len=len(results), results=results)
     
     
-def main():
+if __name__ == '__main__':
     
     (mySession,myModel,myGraph) = load_model_from_file()
     
@@ -232,12 +232,8 @@ def main():
     
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB upload limit
-    app.run()
     
+    results = []
 
-# Create a running list of result
-results = []
-
-# Launch Everyting
-main()
-
+    app.run()
+   

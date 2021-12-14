@@ -46,9 +46,20 @@ def load_model_from_file():
     # Setup the machine learning session
     mySession = tf.compat.v1.keras.backend.get_session()
     set_session(mySession)
-    myModel = load_model('model_pcm_xray.h5')
+    myModel = load_model('model_pcm_xray_v2.h5')
     myGraph = tf.compat.v1.get_default_graph()
     return (mySession,myModel,myGraph)
+
+(mySession,myModel,myGraph) = load_model_from_file()
+    
+app.config['SECRET_KEY'] = 'super secret key'
+    
+app.config['SESSION'] = mySession
+app.config['MODEL'] = myModel
+app.config['GRAPH'] = myGraph
+   
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB upload limit
 
 # Make sure nothing malicious is uploaded
 def allowed_file(filename):
@@ -219,21 +230,8 @@ def uploaded_file(filename):
         results.append(answer)
         return render_template('infeksi.html', myX=X, myY=Y, myZ=Z, mySampleX=sampleX, mySampleY=sampleY, mySampleZ=sampleZ, len=len(results), results=results)
     
+results = []
     
 if __name__ == '__main__':
-    
-    (mySession,myModel,myGraph) = load_model_from_file()
-    
-    app.config['SECRET_KEY'] = 'super secret key'
-    
-    app.config['SESSION'] = mySession
-    app.config['MODEL'] = myModel
-    app.config['GRAPH'] = myGraph
-    
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB upload limit
-    
-    results = []
-
     app.run()
    

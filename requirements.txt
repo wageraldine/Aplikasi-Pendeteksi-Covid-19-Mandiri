@@ -4,3 +4,4 @@ numpy
 tensorflow-cpu
 Werkzeug
 gunicorn
+scikit-learn

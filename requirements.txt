@@ -5,3 +5,4 @@ tensorflow-cpu
 Werkzeug
 gunicorn
 scikit-learn
+pillow
